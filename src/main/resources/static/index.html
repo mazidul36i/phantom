@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Phantom Voice Interface</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="ai-avatar">🤖</div>
+            <div class="chat-title">Phantom AI</div>
+            <div class="chat-status" id="chatStatus">Online</div>
+        </header>
+        <main id="log" class="chat-log"></main>
+        <!-- Voice Only UI -->
+        <div id="voiceOnlyBar" class="voiceonly-bar" style="display:none;">
+            <div class="voiceonly-micwrap">
+                <div id="micIndicator" class="voiceonly-micpulse">🎙️</div>
+                <div id="voiceStatus" class="voiceonly-status">Say something…</div>
+            </div>
+            <button id="exitVoiceModeBtn" class="voiceonly-exit">Exit Voice Only</button>
+        </div>
+        <!-- Text UI -->
+        <form class="chat-input-bar" id="chatForm" autocomplete="off">
+            <input id="userInput" placeholder="Type your message…" autocomplete="off"/>
+            <button id="sendBtn" type="submit">Send</button>
+            <button id="voiceModeBtn" type="button" style="margin-left:1vw; background:#232526; color:#7fffd4; border:none; border-radius:1.2rem; padding:0.7rem 2rem; font-size:1.1rem; font-weight:600; cursor:pointer;">🎤 Voice Only</button>
+        </form>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: Phantom
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/phantom
+    username: postgres
+    password: enter
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: never
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  ai:
+
+    # Ollama model configuration
+    ollama:
+      chat:
+        model: llama2
+        options:
+          repeat-penalty: 1.1
+          frequency-penalty: 1.0
+          presence-penalty: 1.0
+      base-url: http://localhost:11434
+
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+
+      client:
+        observations:
+          log-prompt: true
+
+      observations:
+        include-error-logging: true
+        log-completion: true
+        log-prompt: true
+
+ollama:
+  host: localhost
+  port: 11434
+  model: "llama3-8b"
+
+phantom:
+  websocket:
+    endpoint: /ws/chat
