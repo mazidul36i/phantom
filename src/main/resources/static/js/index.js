@@ -1,6 +1,6 @@
 function renderAssistantResponse(text) {
     // Add a subtle animation for assistant's response, and maybe highlight actionable items in the future
-    return `<span class="assistant-response">${escapeHTML(text)}</span>`;
+    return `<div class="assistant-response">${marked.parse(text)}</div>`;
 }
 // Advanced Text-to-Speech functionality with modern AI voice
 let currentSpeech = null;
@@ -298,11 +298,6 @@ function appendLog(who, text, isUser = false, emotion = "neutral") {
     entry.innerHTML = html;
     log.appendChild(entry);
     log.scrollTop = log.scrollHeight;
-}
-
-function renderAssistantResponse(text) {
-    // Add a subtle animation for assistant's response, and maybe highlight actionable items in the future
-    return `<span class="assistant-response">${escapeHTML(text)}</span>`;
 }
 
 function removeTyping() {

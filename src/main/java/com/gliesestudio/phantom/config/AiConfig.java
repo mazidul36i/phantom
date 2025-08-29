@@ -5,7 +5,7 @@ import org.springframework.ai.chat.memory.ChatMemoryRepository;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepositoryDialect;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.tool.execution.DefaultToolExecutionExceptionProcessor;
 import org.springframework.ai.tool.execution.ToolExecutionException;
 import org.springframework.ai.tool.execution.ToolExecutionExceptionProcessor;
@@ -19,7 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Configuration
 public class AiConfig {
 
-    @Value("${spring.ai.provider:ollama}")
+    @Value("${spring.ai.provider:openai}")
     private String aiProvider;
 
     @Bean
@@ -45,17 +45,21 @@ public class AiConfig {
     }
 
     @Bean
-    public ChatModel chatModel(OllamaChatModel ollamaChatModel) {
+    public ChatModel chatModel(/*OllamaChatModel ollamaChatModel, */OpenAiChatModel openAiChatModel) {
         log.info("Initializing ChatModel with provider: {}", aiProvider);
 
         return switch (aiProvider) {
-            case "ollama" -> {
+/*            case "ollama" -> {
                 log.info("Using OllamaChatModel as the AI provider");
                 yield ollamaChatModel;
+            }*/
+            case "openai" -> {
+                log.info("Using OpenAiChatModel as the AI provider");
+                yield openAiChatModel;
             }
             case null, default -> {
                 log.warn("No AI provider specified, defaulting to OllamaChatModel");
-                yield ollamaChatModel;
+                yield openAiChatModel;
             }
         };
     }

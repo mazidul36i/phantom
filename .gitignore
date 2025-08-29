@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## Top level properties files
+application.yaml
+application.properties

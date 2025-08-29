@@ -256,3 +256,9 @@ body {
     background: #333;
     border-radius: 8px;
 }
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 5px;
+}
